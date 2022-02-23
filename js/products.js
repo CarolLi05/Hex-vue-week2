@@ -20,6 +20,7 @@ createApp({
             })
             .catch((err)=>{
                 console.dir(err.data.message);
+                alert(err.data.message);
             })
         },
         getProducts(){
@@ -36,11 +37,11 @@ createApp({
         showProduct(item){
             this.temp = item;
         },
-        created(){ //當作 init
-            // 取出 token，經過驗證之後才會執行 check
-            const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-            axios.defaults.headers.common['Authorization'] = token;
-            this.checkLogin();
-        }
+    },
+    created(){ //當作 init
+        // 取出 token，經過驗證之後才會執行 check
+        const token = document.cookie.replace(/(?:(?:^|.*;\s*)loginToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        axios.defaults.headers.common['Authorization'] = token;
+        this.checkLogin();
     }
 }).mount('#app');
