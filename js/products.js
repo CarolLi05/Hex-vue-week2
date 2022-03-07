@@ -19,18 +19,19 @@ createApp({
                 this.getProducts();
             })
             .catch((err)=>{
-                console.dir(err.data.message);
-                alert(err.data.message);
+                // console.dir(err.data.message);
+                // alert(err.data.message);
+                window.location = './index.html';
             })
         },
         getProducts(){
             axios.get(`${url}/api/${path}/admin/products`)
             .then((res)=>{
                 this.products = res.data.products;
-                console.log(this.products);
+                // console.log(this.products);
             })
             .catch((err)=>{
-                alert(err.data.message);
+                // alert(err.data.message);
                 window.location = './index.html';
             })
         },
